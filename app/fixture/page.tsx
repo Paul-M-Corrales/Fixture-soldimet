@@ -52,7 +52,9 @@ const paises: Record<string, { nombre: string; code: string }> = {
 };
 
 async function getFixture() {
-  const response = await fetch("http://localhost:3000/api/fixture", {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+  const response = await fetch(`${siteUrl}/api/fixture`, {
     cache: "no-store",
   });
 
