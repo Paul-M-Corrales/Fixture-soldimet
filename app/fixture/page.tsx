@@ -56,7 +56,7 @@ const paises: Record<string, { nombre: string; code: string }> = {
 async function getFixture() {
   try {
     const response = await fetch(
-      `https://api.isportsapi.com/sport/football/schedule/basic?api_key=${process.env.ISPORTS_API_KEY}&leagueId=1572`,
+      "https://fixture-soldimet.netlify.app/api/fixture",
       {
         cache: "no-store",
       },
@@ -64,7 +64,15 @@ async function getFixture() {
 
     const data = await response.json();
 
-    return data.data || [];
+    if (Array.isArray(data)) {
+      return data;
+    }
+
+    if (Array.isArray(data.data)) {
+      return data.data;
+    }
+
+    return [];
   } catch (error) {
     console.error("Error cargando fixture:", error);
     return [];
