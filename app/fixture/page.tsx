@@ -58,7 +58,9 @@ async function getFixture() {
     const response = await fetch(
       "https://fixture-soldimet.netlify.app/api/fixture",
       {
-        cache: "no-store",
+        next: {
+          revalidate: 300,
+        },
       },
     );
 
