@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
+
 const paises: Record<string, { nombre: string; code: string }> = {
   Mexico: { nombre: "México", code: "mx" },
   "South Africa": { nombre: "Sudáfrica", code: "za" },
@@ -52,15 +54,21 @@ const paises: Record<string, { nombre: string; code: string }> = {
 };
 
 async function getFixture() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  try {
+    const response = await fetch(
+      `https://api.isportsapi.com/sport/football/schedule/basic?api_key=${process.env.ISPORTS_API_KEY}&leagueId=1572`,
+      {
+        cache: "no-store",
+      },
+    );
 
-  const response = await fetch(`${siteUrl}/api/fixture`, {
-    cache: "no-store",
-  });
+    const data = await response.json();
 
-  const data = await response.json();
-
-  return data.data || [];
+    return data.data || [];
+  } catch (error) {
+    console.error("Error cargando fixture:", error);
+    return [];
+  }
 }
 
 export default async function FixturePage() {
