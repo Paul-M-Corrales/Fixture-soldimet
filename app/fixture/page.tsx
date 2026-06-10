@@ -120,23 +120,12 @@ export default async function FixturePage() {
         </div>
 
         <div className="bg-blue-700 px-4 py-4">
-          <div className="max-w-md mx-auto grid grid-cols-4 text-center">
-            <div>
-              <p className="text-3xl font-black">02</p>
-              <p className="text-xs tracking-widest text-gray-300">DÍAS</p>
-            </div>
-            <div>
-              <p className="text-3xl font-black">20</p>
-              <p className="text-xs tracking-widest text-gray-300">HORAS</p>
-            </div>
-            <div>
-              <p className="text-3xl font-black">11</p>
-              <p className="text-xs tracking-widest text-gray-300">MINS</p>
-            </div>
-            <div>
-              <p className="text-3xl font-black">54</p>
-              <p className="text-xs tracking-widest text-gray-300">SEGS</p>
-            </div>
+          <div className="max-w-md mx-auto text-center">
+            <p className="text-sm tracking-[4px] text-blue-100 font-black">
+              FIXTURE ACTUALIZADO AUTOMÁTICAMENTE
+            </p>
+
+            <p className="text-3xl font-black text-white mt-1">MUNDIAL 2026</p>
           </div>
         </div>
 
